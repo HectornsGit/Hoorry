@@ -68,7 +68,7 @@ async function main() {
   const response = await fetch(amadeusUrl, {
     method: "GET",
     headers: {
-      Authoritation: `Bearer ${token}`, //Supuestamente esta es la manera de autenticarnos
+      Authorization: `Bearer ${token}`, //Supuestamente esta es la manera de autenticarnos
     },
     mode: "cors", //Nos da un error de CORS así que he probado a poner esta línea, pero no parece funcionar
   });
