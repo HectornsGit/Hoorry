@@ -1,6 +1,10 @@
 "use strict";
 
-import { getToken, getFlightsList, getCheapestFlight } from "./script.js";
+import {
+  getFlightsList,
+  getCheapestFlight,
+  getTomorrowDate,
+} from "./script.js";
 
 const form = document.querySelector("form.search"); //Seleccionamos el formulario.
 const results = document.querySelector("article.result");
@@ -15,11 +19,14 @@ const doSearch = async (event) => {
 
   const destination = values.get("destination"); //Campo del formulario donde introducimos el aeropuerto de origen
 
-  const urlAmadeus = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${origin.toUpperCase()}&destinationLocationCode=${destination.toUpperCase()}&departureDate=2022-12-15&adults=1`;
+  const urlAmadeus = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${origin.toUpperCase()}&destinationLocationCode=${destination.toUpperCase()}&departureDate=${getTomorrowDate()}&adults=1`;
 
-  getToken(); //pedimos el token de acceso a la api
   const flightList = await getFlightsList(urlAmadeus); //Guardamos los resultados del fetch en una variable para acceder a ellos más tarde
-  getCheapestFlight(flightList); //Llamamos a la función que nos seleccionará el vuelo más barato.
+
+  const dict = flightList.dictionaries;
+
+  const flightInfo = await getCheapestFlight(flightList, dict); //Guardamos la información del vuelo más barato.
+  results.innerHTML = `<ul><li>${flightInfo.departureTime}-${flightInfo.arrivalTime}</li><li>${flightInfo.segments}</li><li>${flightInfo.total} EUR</li></ul>`;
 };
 
 form.addEventListener("submit", doSearch); //Añadimos el evento al botón y le asignamos la función manejadora previamente definida.

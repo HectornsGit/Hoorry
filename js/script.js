@@ -19,8 +19,6 @@ async function getToken() {
     if (response.ok) {
       const data = await response.json();
 
-      console.log(data);
-
       const accessToken = data.access_token;
 
       return accessToken;
@@ -60,13 +58,19 @@ async function getFlightsList(amadeusUrl) {
   }
 }
 
+function getTomorrowDate() {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  return `${tomorrow.getFullYear()}-${
+    tomorrow.getMonth() + 1
+  }-${tomorrow.getDate()}`;
+}
 // Función encargada de escoger el vuelo más barato entre los vuelos guardados en un JSON.
-
-async function getCheapestFlight(JSON) {
+async function getCheapestFlight(JSON, dict) {
   try {
     // Si no hubiese vuelos disponibles nos dará un error correspondiente.
     if (JSON.meta.count === 0) {
-      throw new Error("No hay vuelos disponibles");
+      throw new Error("No hay vuelos disponibles o código IATA incorrecto");
     }
 
     const flights = await JSON.data; // Sacamos la información de los vuelos del JSON.
@@ -82,14 +86,44 @@ async function getCheapestFlight(JSON) {
         cheapestFlight = flight;
       }
     }
+    const carrierCode = cheapestFlight.validatingAirlineCodes[0];
 
-    //Por ahora esto solo imprime una string que siempre será el vuelo más barato es flight-offer: 1 (porque están ordenados por precio los vuelos)
-    console.log(
-      `El vuelo más barato es ${cheapestFlight.type}: ${cheapestFlight.id}`
-    );
+    let getSegments = cheapestFlight.itineraries[0].segments.length - 1;
+
+    if (getSegments === 0) {
+      getSegments = "Directo";
+    } else {
+      getSegments = getSegments + ` escalas`;
+    }
+    return {
+      origin: cheapestFlight.itineraries[0].segments[0].departure.iataCode,
+
+      departureTime: cheapestFlight.itineraries[0].segments[0].departure.at
+        .split("T")[1]
+        .slice(0, -3),
+
+      destination:
+        cheapestFlight.itineraries[0].segments[
+          cheapestFlight.itineraries[0].segments.length - 1
+        ].arrival.iataCode,
+
+      arrivalTime: cheapestFlight.itineraries[0].segments[
+        cheapestFlight.itineraries[0].segments.length - 1
+      ].arrival.at
+        .split("T")[1]
+        .slice(0, -3),
+
+      total: cheapestFlight.price.total,
+
+      segments: getSegments,
+
+      duration: cheapestFlight.itineraries[0].duration.slice(2),
+
+      airline: dict.carriers[carrierCode],
+    };
   } catch (error) {
     console.error(error.message);
   }
 }
 
-export { getToken, getFlightsList, getCheapestFlight };
+export { getFlightsList, getCheapestFlight, getTomorrowDate };
