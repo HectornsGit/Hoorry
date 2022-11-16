@@ -5,22 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link rel="manifest" href="/img/site.webmanifest">
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <title>Hoorry!</title>
   </head>
   <body>
     <header>
-      <h1>Hoorry!</h1>
-      <nav>
-        <form class="search" action="" method="get">
-          <label for="origin">Origen</label>
-          <input name="origin" id="originID" type="search" required />
-          <label for="destination">Destino</label>
-          <input name="destination" id="destinationID" type="search" required />
-          <button type="submit">Buscar!</button>
-        </form>
-      </nav>
+      <h1 class="logo">
+        <img src="img/hoorry_completo_blanco-04.svg" alt="logo de hoory"></img>
+      </h1>
+      <nav></nav>
     </header>
     <main>
+      <form class="search" action="" method="get">
+        <div>
+          <label for="origin"></label>
+          <input
+            name="origin"
+            id="originID"
+            type="search"
+            autocomplete="off"
+            required
+            placeholder="¿De dónde vienes?"
+          />
+          <label for="destination"></label>
+          <input
+            name="destination"
+            id="destinationID"
+            type="search"
+            autocomplete="off"
+            required
+            placeholder="¿A dónde  vas?"
+          />
+          <label for="passenger"></label>
+          <input
+            name="passenger"
+            id="passengerID"
+            type="text"
+            readonly
+            placeholder="1 adulto"
+          />
+          <label for="date"></label>
+          <input name="date" id="dateID" type="text" readonly placeholder="" />
+          <button type="submit">Buscar!</button>
+        </div>
+      </form>
       <article class="result"></article>
     </main>
     <footer>

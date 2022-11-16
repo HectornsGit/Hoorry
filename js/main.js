@@ -9,6 +9,9 @@ import {
 
 const form = document.querySelector("form.search"); // Seleccionamos el formulario.
 const results = document.querySelector("article.result"); // Selecccionamos el article donde irá nuestro resultado de la búsqueda.
+const inputDate = document.querySelector("input#dateID");
+
+inputDate.setAttribute("placeholder", `${getTomorrowDate()}`);
 
 //^Función manejadora de nuestro evento.
 const doSearch = async (event) => {
