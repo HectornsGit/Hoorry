@@ -15,10 +15,10 @@
     <title>Hoorry!</title>
   </head>
   <body>
-    <header>
-      <h1 class="logo">
-        <img src="img/hoorry_completo_blanco-04.svg" alt="logo de hoory"></img>
-      </h1>
+      <header>
+        <h1 class="logo">
+          <img src="img/hoorry_completo_blanco-04.svg"  alt="logo de hoory"></img>
+        </h1>
       <nav></nav>
     </header>
     <main>
@@ -47,22 +47,43 @@
             name="passenger"
             id="passengerID"
             type="text"
-            readonly
+            disabled
             placeholder="1 adulto"
           />
           <label for="date"></label>
-          <input name="date" id="dateID" type="text" readonly placeholder="" />
+          <input name="date" id="dateID" type="text" disabled placeholder="" />
           <button type="submit">Buscar!</button>
         </div>
       </form>
-      <article class="result"></article>
-    </main>
+      <article class="result" id="resultID">
+        <ul>
+          <li>
+             <ul>
+                <li class="departure-result"></li>
+                <li>
+                  <ul class="middle-ul">
+                    <li class="travel-duration"></li>
+                    <li class="stop-over"></li>
+                  </ul>
+                </li>
+                <li class="arrival-result"></li>
+              </ul>
+          </li>
+        <li class="price"></li>
+      </ul>
+      </article>
+      
+  </main>
     <footer>
       <nav class="contact">
         <ul></ul>
       </nav>
     </footer>
-    <script type="module" src="/js/main.js"></script>
-    <!-- <script type="module" src="/js/testingAmadeus.js"></script> -->
+  <div class="modal-background display-none">
+  <div class="modal-content display-none">
+    <img src="img/hoorry_logo-02.svg" class="rotate-center display-none"alt="loading">
+  </div>
+</div>
+  <script type="module" src="/js/main.js"></script>
   </body>
 </html>

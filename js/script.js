@@ -93,7 +93,6 @@ async function getCheapestFlight(JSON) {
 }
 
 // Función para crear un objeto ordenadito con nuestra información más relevante :)
-
 async function createFlightObject(flightData, dict) {
   // Estas variables me permiten moverme por el JSON de manera más cómoda.
   const carrierCode = flightData.validatingAirlineCodes[0];
@@ -119,14 +118,16 @@ async function createFlightObject(flightData, dict) {
     /* Hora de salida del primer vuelo nos venía en formato "2022-11-16T12:10:00" así que separamos la string con split cogiendo la T y nos quedamos con la segunda mitad.
        A esta le quitamos los segundos con un slice (0,-3) ==> esto coge toda la string salvo los 3 últimos caracteres.*/
     departureTime: segments[0].departure.at.split("T")[1].slice(0, -3),
-
+    departureDate: segments[0].departure.at.split("T")[0].slice(5),
     destination: segments[segments.length - 1].arrival.iataCode, //IATA del aeropuerto destino es segments[segments.lenght-1] porque esto nos devuelve el último vuelo del viaje siempre.
 
     // Hora de llegada, lo mismo que con la de arriba solo que aquí prettier me separa el código.
     arrivalTime: segments[segments.length - 1].arrival.at
       .split("T")[1]
       .slice(0, -3),
-
+    arrivalDate: segments[segments.length - 1].arrival.at
+      .split("T")[0]
+      .slice(5),
     // Precio total del viaje
     total: flightData.price.total,
 
@@ -142,6 +143,7 @@ async function createFlightObject(flightData, dict) {
   };
   return flightObject;
 }
+
 export {
   getFlightsList,
   getCheapestFlight,

@@ -1,12 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,200;1,300;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,200;1,300;1,400&display=swap");
 
 * {
-  margin: none;
-  padding: none;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  background-color: RGBA(0, 177, 219, 0.2);
+  background-color: #c8e3ff;
   font-family: Montserrat;
   margin: auto;
   text-align: center;
@@ -21,8 +22,7 @@ ul {
 }
 
 header {
-  background-color: RGB(0, 177, 219);
-  box-shadow: 2px 2px 5px black;
+  background-color: #8bc3ff;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,15 +32,16 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
+  height: 80px;
 }
 
-img {
-  height: 70px;
+h1 > img {
+  height: 40px;
 }
 
 form div {
-  border: 4px solid rgb(245, 174, 95);
+  border: 3px solid #ff8c44;
+
   border-radius: 0.5rem;
   margin: 20px;
   display: flex;
@@ -54,23 +55,25 @@ input {
   border: none;
   padding: 10px;
   font-family: Montserrat;
+  font-weight: 500;
   background-color: white;
 }
 
 input#originID {
   border-radius: 3px 3px 0 0;
-  border-bottom: 0.5px solid lightblue;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.6);
 }
 
 input#destinationID {
-  border-bottom: 0.5px solid lightblue;
+  border-bottom: 1px solid rgba(211, 211, 211, 0.6);
 }
 
 button {
   border: none;
-  background-color: RGB(0, 177, 219);
+  background-color: #8bc3ff;
   border-radius: 0px 0px 4px 4px;
   font-family: Montserrat;
+  font-size: 1rem;
   padding: 8px;
   font-weight: 700;
   color: white;
@@ -80,9 +83,116 @@ input:focus {
   outline: none;
   background-color: RGBA(0, 177, 219, 0.3);
 }
-
+article#resultID {
+  display: none;
+}
 article {
-  border: 2px solid rgb(245, 174, 95);
+  border: 2px solid #ff8c44;
+  background-color: white;
   margin: 0 20px;
   border-radius: 0.5rem;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ul.main-article li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ul.main-article > li:first-child {
+  border-bottom: 1px solid rgba(211, 211, 211, 0.6);
+  padding: 0;
+}
+ul.main-article {
+  height: 110px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+ul.main-article > li > ul {
+  display: flex;
+  justify-content: space-around;
+  height: 60px;
+  width: 100%;
+}
+
+ul.middle-ul {
+  flex-grow: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+ul.middle-ul > li:first-child {
+  border-bottom: 1px solid lightgray;
+}
+ul.middle-ul > li {
+  padding: 4px;
+}
+li.important {
+  font-weight: 700;
+}
+li.price {
+  align-items: flex-end;
+  font-weight: 700;
+  margin-right: 5px;
+}
+/*  -------------------ANIMACION BÚHO-------------------- */
+
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(33, 38, 84, 0.7);
+  display: flex;
+  align-items: center;
+}
+.modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+}
+
+.rotate-center {
+  -webkit-animation: rotate-center 0.6s ease-in-out both;
+  animation: rotate-center 0.6s ease-in-out both;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  height: 90px;
+}
+
+.display-none {
+  display: none;
 }
