@@ -12762,3 +12762,4 @@
     }
   }
 }
+<ul class="main-article"><li><ul><li><ul><li class="important">${flightObject.departureTime}</li>${flightObject.origin} · ${flightObject.departureDate}</li></ul><li><ul class="middle-ul"><li>${flightObject.duration}</li><li>${flightObject.stopovers}</li></ul></li><li class="arrival-result"><ul><li class="important">${flightObject.arrivalTime}</li><li>${flightObject.destination} · ${flightObject.arrivalDate}</li></ul></li></ul><li>${flightObject.airline}</li><li class="price important">${flightObject.total} EUR</li></ul>

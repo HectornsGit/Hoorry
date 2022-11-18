@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/*----------------GENERAL-------------------*/
 body {
   background-color: #c8e3ff;
   font-family: Montserrat;
@@ -21,6 +21,8 @@ ul {
   list-style: none;
 }
 
+/*----------------HEADER-------------------*/
+
 header {
   background-color: #8bc3ff;
   display: flex;
@@ -34,14 +36,15 @@ h1 {
   justify-content: center;
   height: 80px;
 }
-
+/* Logotipo*/
 h1 > img {
   height: 40px;
 }
 
+/*----------------FORM-------------------*/
+
 form div {
   border: 3px solid #ff8c44;
-
   border-radius: 0.5rem;
   margin: 20px;
   display: flex;
@@ -57,6 +60,11 @@ input {
   font-family: Montserrat;
   font-weight: 500;
   background-color: white;
+}
+
+input:focus {
+  outline: none;
+  background-color: RGBA(0, 177, 219, 0.3);
 }
 
 input#originID {
@@ -79,15 +87,15 @@ button {
   color: white;
 }
 
-input:focus {
-  outline: none;
-  background-color: RGBA(0, 177, 219, 0.3);
-}
+/*----------------RESULTS-------------------*/
+
 article#resultID {
   display: none;
 }
+
+/*Contenedor de los resultados*/
+
 article {
-  border: 2px solid #ff8c44;
   background-color: white;
   margin: 0 20px;
   border-radius: 0.5rem;
@@ -95,16 +103,9 @@ article {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
 }
-ul.main-article li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-ul.main-article > li:first-child {
-  border-bottom: 1px solid rgba(211, 211, 211, 0.6);
-  padding: 0;
-}
+
 ul.main-article {
   height: 110px;
   width: 100%;
@@ -113,12 +114,32 @@ ul.main-article {
   justify-content: space-between;
   padding: 10px;
 }
+
+/*li de los resultados*/
+
+ul.main-article li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Primer tercio de los resultados */
+
+ul.main-article > li:first-child {
+  border-bottom: 1px solid rgba(211, 211, 211, 0.6);
+  padding: 0;
+}
+
+/* Mitad superior de los resultados */
+
 ul.main-article > li > ul {
   display: flex;
   justify-content: space-around;
   height: 60px;
   width: 100%;
 }
+
+/*Segundo tercio de los resultados*/
 
 ul.middle-ul {
   flex-grow: 1;
@@ -128,21 +149,43 @@ ul.middle-ul {
   justify-content: center;
 }
 
-ul.middle-ul > li:first-child {
-  border-bottom: 1px solid lightgray;
-}
 ul.middle-ul > li {
   padding: 4px;
 }
+
+/*Tiempo del viaje*/
+ul.middle-ul > li:first-child {
+  border-bottom: 1px solid lightgray;
+}
+ul.middle-ul > li:nth-child(2) {
+  font-size: 0.8rem;
+}
+
+/*Cosas que queremos en negrita*/
 li.important {
   font-weight: 700;
 }
+
+ul.main-article li ul:nth-child(2) {
+  background-color: red;
+}
+
+ul.airline-price-result {
+  display: flex;
+  align-items: flex-start;
+}
+ul.airline-price-result > li {
+  margin-top: 10px;
+}
+li.airline {
+  align-items: flex-start;
+}
 li.price {
   align-items: flex-end;
-  font-weight: 700;
   margin-right: 5px;
 }
-/*  -------------------ANIMACION BÚHO-------------------- */
+
+/*-------------------ANIMATION  &  MODAL--------------------*/
 
 .modal-background {
   width: 100vw;
@@ -152,6 +195,7 @@ li.price {
   display: flex;
   align-items: center;
 }
+
 .modal-content {
   display: flex;
   align-items: center;
@@ -186,13 +230,14 @@ li.price {
 }
 
 .rotate-center {
-  -webkit-animation: rotate-center 0.6s ease-in-out both;
-  animation: rotate-center 0.6s ease-in-out both;
+  -webkit-animation: rotate-center 0.4s ease-in-out both;
+  animation: rotate-center 0.4s ease-in-out both;
   animation-direction: alternate;
   animation-iteration-count: infinite;
   height: 90px;
 }
 
+/*----------------YOU HAVEN'T SEEN ANYTHING-------------------*/
 .display-none {
   display: none;
 }

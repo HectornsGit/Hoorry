@@ -5,26 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-    <link rel="manifest" href="/img/site.webmanifest">
-    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/img/site.webmanifest" />
+    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
     <title>Hoorry!</title>
   </head>
   <body>
-      <header>
-        <h1 class="logo">
-          <img src="img/hoorry_completo_blanco-04.svg"  alt="logo de hoory"></img>
-        </h1>
+    <header>
+      <h1 class="logo">
+        <img src="img/hoorry_completo_blanco-04.svg" alt="logo de hoory" />
+      </h1>
       <nav></nav>
     </header>
+
     <main>
-      <form class="search" action="" method="get">
+      <form class="search" method="get">
         <div>
-          <label for="origin"></label>
+          <label for="originID"></label>
           <input
             name="origin"
             id="originID"
@@ -33,7 +48,8 @@
             required
             placeholder="¿De dónde vienes?"
           />
-          <label for="destination"></label>
+
+          <label for="destinationID"></label>
           <input
             name="destination"
             id="destinationID"
@@ -42,7 +58,8 @@
             required
             placeholder="¿A dónde  vas?"
           />
-          <label for="passenger"></label>
+
+          <label for="passengerID"></label>
           <input
             name="passenger"
             id="passengerID"
@@ -50,40 +67,61 @@
             disabled
             placeholder="1 adulto"
           />
-          <label for="date"></label>
+
+          <label for="dateID"></label>
           <input name="date" id="dateID" type="text" disabled placeholder="" />
+
           <button type="submit">Buscar!</button>
         </div>
       </form>
+
       <article class="result" id="resultID">
-        <ul>
+        <ul class="main-article">
           <li>
-             <ul>
-                <li class="departure-result"></li>
-                <li>
-                  <ul class="middle-ul">
-                    <li class="travel-duration"></li>
-                    <li class="stop-over"></li>
-                  </ul>
-                </li>
-                <li class="arrival-result"></li>
-              </ul>
+            <ul>
+              <li>
+                <ul class="departure-result">
+                  <li class="important">HORA ORIGEN</li>
+                  <li>ORIGEN Y FECHA SALIDA</li>
+                </ul>
+              </li>
+              <li>
+                <ul class="time-stopeOvers-result">
+                  <li>TIEMPO VIAJE</li>
+                  <li>ESCALAS</li>
+                </ul>
+              </li>
+              <li>
+                <ul class="arrival-result">
+                  <li class="important">HORA LLEGADA</li>
+                  <li>DESTINO FECHA DESTINO</li>
+                </ul>
+              </li>
+            </ul>
           </li>
-        <li class="price"></li>
-      </ul>
+          <li>
+            <ul class="airline-price-result">
+              <li class="airline">AEROLINEA</li>
+              <li class="price important">PRECIO</li>
+            </ul>
+          </li>
+        </ul>
       </article>
-      
-  </main>
+    </main>
     <footer>
       <nav class="contact">
         <ul></ul>
       </nav>
     </footer>
-  <div class="modal-background display-none">
-  <div class="modal-content display-none">
-    <img src="img/hoorry_logo-02.svg" class="rotate-center display-none"alt="loading">
-  </div>
-</div>
-  <script type="module" src="/js/main.js"></script>
+    <div class="modal-background display-none">
+      <div class="modal-content display-none">
+        <img
+          src="img/hoorry_logo-02.svg"
+          class="rotate-center display-none"
+          alt="loading"
+        />
+      </div>
+    </div>
+    <script type="module" src="/js/main.js"></script>
   </body>
 </html>
