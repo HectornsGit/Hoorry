@@ -143,6 +143,11 @@ async function createFlightObject(flightData, dict) {
   };
   return flightObject;
 }
+async function render(flightObject) {
+  const departureTimeElement = document.querySelector("li.departure-time");
+  departureTimeElement.innerHTML = `${flightObject.departureTime}`;
+  // ...
+}
 
 export {
   getFlightsList,
