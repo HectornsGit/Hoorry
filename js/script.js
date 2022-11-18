@@ -28,15 +28,14 @@ async function getToken() {
       `Ha habido un error ${response.status}: ${response.statusText} `
     );
   } catch (error) {
-    console.error(error.message);
+    return error.message;
   }
 }
 
 // Función encargada de obtener la lista con los vuelos
 async function getFlightsList(amadeusUrl) {
+  const token = await getToken();
   try {
-    const token = await getToken();
-
     const response = await fetch(amadeusUrl, {
       method: "GET",
       headers: {
@@ -49,12 +48,11 @@ async function getFlightsList(amadeusUrl) {
       const data = await response.json();
       return data;
     }
-
     throw new Error(
       `Ha habido un error ${response.status}: ${response.statusText}`
     );
   } catch (error) {
-    console.error(error.message);
+    return error.message;
   }
 }
 
@@ -88,7 +86,7 @@ async function getCheapestFlight(JSON) {
     }
     return cheapestFlight;
   } catch (error) {
-    console.error(error.message);
+    return error.message;
   }
 }
 
@@ -143,10 +141,37 @@ async function createFlightObject(flightData, dict) {
   };
   return flightObject;
 }
+
 async function render(flightObject) {
   const departureTimeElement = document.querySelector("li.departure-time");
   departureTimeElement.innerHTML = `${flightObject.departureTime}`;
-  // ...
+
+  const originElement = document.querySelector("li.origin");
+  originElement.innerHTML = `${flightObject.origin} · ${flightObject.departureDate}`;
+
+  const travelDurationElement = document.querySelector("li.travel-duration");
+  travelDurationElement.innerHTML = `${flightObject.duration}`;
+
+  const stopoversElement = document.querySelector("li.stopOvers");
+  stopoversElement.innerHTML = `${flightObject.stopovers}`;
+
+  const arrivalTimeElement = document.querySelector("li.arrival-time");
+  arrivalTimeElement.innerHTML = `${flightObject.arrivalTime}`;
+
+  const flightDestinationElement = document.querySelector("li.arrival");
+  flightDestinationElement.innerHTML = `${flightObject.destination} · ${flightObject.arrivalDate}`;
+
+  const airlineElement = document.querySelector("li.airline");
+  airlineElement.innerHTML = `${flightObject.airline}`;
+
+  const totalPriceElement = document.querySelector("li.price");
+  totalPriceElement.innerHTML = `${flightObject.total} €`;
+}
+
+function renderError(error) {
+  const errorElement = document.querySelector("article.error");
+  errorElement.innerHTML = `<p>${error.name}: ${error.message}<p>`;
+  errorElement.classList.toggle("display-none");
 }
 
 export {
@@ -154,4 +179,6 @@ export {
   getCheapestFlight,
   getTomorrowDate,
   createFlightObject,
+  render,
+  renderError,
 };

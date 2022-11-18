@@ -1,42 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/img/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/img/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/img/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/img/site.webmanifest" />
-    <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#5bbad5" />
+
     <meta name="msapplication-TileColor" content="#da532c" />
     <meta name="theme-color" content="#ffffff" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
     <title>Hoorry!</title>
   </head>
   <body>
     <header>
       <h1 class="logo">
-        <img src="img/hoorry_completo_blanco-04.svg" alt="logo de hoory" />
+        <img src="img/hoorry_completo_blanco-04.svg" alt="logo de hoorry" />
       </h1>
-      <nav></nav>
-    </header>
+      <nav class="menu">
+        <a
+          href="https://github.com/HectornsGit"
+          target="_blank"
+          class="gitHector"
+        >
+          <img src="img/github.png" alt="" class="gatogit" />
+          Soy Héctor
+        </a>
+        <a
+          href="https://github.com/gabiyervese"
+          target="_blank"
+          class="gitGaby"
+        >
+          <img src="img/github.png" alt="" class="gatogit" />
+          Soy Gaby
+        </a>
 
+        <a
+          href="https://github.com/blanconuclear"
+          target="_blank"
+          class="gitEfren"
+        >
+          <img src="img/github.png" alt="" class="gatogit" />
+          Soy Efrén
+        </a>
+      </nav>
+    </header>
     <main>
+      <div class="view"></div>
       <form class="search" method="get">
         <div>
           <label for="originID"></label>
@@ -45,6 +63,7 @@
             id="originID"
             type="search"
             autocomplete="off"
+            maxlength="3"
             required
             placeholder="¿De dónde vienes?"
           />
@@ -55,6 +74,7 @@
             id="destinationID"
             type="search"
             autocomplete="off"
+            maxlength="3"
             required
             placeholder="¿A dónde  vas?"
           />
@@ -107,6 +127,7 @@
           </li>
         </ul>
       </article>
+      <article class="error display-none"></article>
     </main>
     <footer>
       <nav class="contact">

@@ -33,12 +33,36 @@ header {
 h1 {
   display: flex;
   flex-direction: column;
+  align-content: center;
   justify-content: center;
-  height: 80px;
+  margin-top: 15px;
+  height: 50px;
 }
+
 /* Logotipo*/
 h1 > img {
-  height: 40px;
+  height: 55px;
+}
+
+nav.menu {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+nav.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+nav.menu a:hover,
+nav.menu a:active {
+  background-color: rgba(255, 255, 255, 0.542);
 }
 
 /*----------------FORM-------------------*/
@@ -64,7 +88,7 @@ input {
 
 input:focus {
   outline: none;
-  background-color: RGBA(0, 177, 219, 0.3);
+  background-color: #e5eef8;
 }
 
 input#originID {
@@ -85,6 +109,10 @@ button {
   padding: 8px;
   font-weight: 700;
   color: white;
+}
+
+button:hover {
+  background-color: #3692f4;
 }
 
 /*----------------RESULTS-------------------*/
@@ -141,7 +169,7 @@ ul.main-article > li > ul {
 
 /*Segundo tercio de los resultados*/
 
-ul.middle-ul {
+ul.time-stopeOvers-result {
   flex-grow: 1;
   min-width: 100px;
   display: flex;
@@ -149,15 +177,16 @@ ul.middle-ul {
   justify-content: center;
 }
 
-ul.middle-ul > li {
+ul.time-stopeOvers-result > li {
   padding: 4px;
 }
 
 /*Tiempo del viaje*/
-ul.middle-ul > li:first-child {
+ul.time-stopeOvers-result > li:first-child {
   border-bottom: 1px solid lightgray;
 }
-ul.middle-ul > li:nth-child(2) {
+
+ul.time-stopeOvers-result > li:nth-child(2) {
   font-size: 0.8rem;
 }
 
@@ -172,19 +201,21 @@ ul.main-article li ul:nth-child(2) {
 
 ul.airline-price-result {
   display: flex;
+  justify-content: space-between;
   align-items: flex-start;
 }
+
 ul.airline-price-result > li {
   margin-top: 10px;
 }
-li.airline {
-  align-items: flex-start;
-}
-li.price {
-  align-items: flex-end;
-  margin-right: 5px;
-}
 
+/*------------------ERROR-----------------------------------*/
+
+article.error {
+  padding: 20px;
+  font-weight: 700;
+  color: red;
+}
 /*-------------------ANIMATION  &  MODAL--------------------*/
 
 .modal-background {
@@ -240,4 +271,112 @@ li.price {
 /*----------------YOU HAVEN'T SEEN ANYTHING-------------------*/
 .display-none {
   display: none;
+}
+
+/*---------------ICONOS-----------------*/
+
+.gitGaby,
+.gitEfren,
+.gitHector {
+  display: flex;
+  align-items: center;
+}
+
+.gatogit {
+  width: 30px;
+  margin-right: 4px;
+  margin-right: 10px;
+}
+
+.view {
+  display: none;
+}
+
+/*---------------MEDIA QUERIES-----------------*/
+
+@media (min-width: 800px) {
+  header {
+    height: 20%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  h1 {
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    padding-top: 15px;
+  }
+
+  nav.menu {
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  nav.menu a {
+    font-size: 20px;
+  }
+  form div {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0px;
+    justify-content: space-between;
+    position: relative;
+    bottom: 30px;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+  }
+
+  input {
+    flex-grow: 1;
+    border-radius: 0px;
+    align-self: stretch;
+  }
+
+  input#originID {
+    border-bottom: none;
+    border-radius: 4px 0px 0px 4px;
+    border-right: 3px solid #ff8c44;
+  }
+
+  input#destinationID {
+    border-bottom: none;
+    border-right: 3px solid #ff8c44;
+  }
+
+  input#passengerID {
+    border-right: 3px solid #ff8c44;
+  }
+  input#dateID {
+    border-right: 3px solid #ff8c44;
+  }
+  button {
+    border-radius: 0px 4px 4px 0px;
+    align-self: stretch;
+  }
+
+  div.view {
+    height: 300px;
+    width: 100vw;
+    background-image: url("/img/pexels-pok-rie-130879.jpg");
+    background-position: center;
+    background-position-y: -200px;
+    background-size: cover;
+  }
+  .view {
+    display: block;
+  }
+  main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  ul.main-article {
+    min-width: 400px;
+  }
 }
