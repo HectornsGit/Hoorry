@@ -49,6 +49,12 @@ async function getFlightsList(amadeusUrl) {
       const data = await response.json();
       return data;
     }
+
+    if (response.status === 400) {
+      throw new Error(
+        ` ${response.status}: Compruebe que ha hecho bien la petición.`
+      );
+    }
     throw new Error(
       `Ha habido un error ${response.status}: ${response.statusText}`
     );
@@ -177,7 +183,7 @@ async function renderError(error) {
   // Creamos el article que mostrará el error.
   const errorElement = document.createElement("article");
   // Seleccionamos el botón del form.
-  const buttonElement = document.querySelector("button");
+  const buttonElement = document.querySelector("form button");
 
   // Añadimos la clase error, el párrafo que mostrará el error y lo añadimos al main.
   errorElement.classList.add("error");

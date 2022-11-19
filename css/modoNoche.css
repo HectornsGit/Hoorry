@@ -1,88 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,200;1,300;1,400&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/*-----------COLORES--------------*/
-html {
-  --bg-header: #8bc3ff;
-  --bg-body: #c8e3ff;
-  --btn-color: #3692f4;
-  --txt-color-result: black;
-  --color-hoorry: #ff8c44;
-  --bg-resut: white;
-  --bg-input: white;
-}
-
-html.night {
-  --bg-header: #a68bfe;
-  --bg-body: #2b223a;
-  --btn-color: #594b87;
-  --txt-color-result: white;
-  --bg-resut: #594b87;
-  --bg-input: #d6cfef;
-}
-
 /*----------------GENERAL-------------------*/
-body {
-  background-color: var(--bg-body);
-  font-family: Montserrat;
-  margin: auto;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: 100vh;
-}
-
-ul {
-  list-style: none;
+body,
+header {
+  background-color: rgb(164, 57, 161);
 }
 
 /*----------------HEADER-------------------*/
 
-header {
-  background-color: var(--bg-header);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-h1 {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  margin-top: 15px;
-  height: 50px;
-}
-
 /* Logotipo*/
-h1 > img {
-  height: 40px;
-}
-
-h1 {
-  align-self: flex-start;
-}
-
-nav.menu {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
-}
 
 nav.menu a {
-  text-decoration: none;
   color: white;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 8px;
-  border-radius: 10px;
-  font-size: 12px;
 }
 
 nav.menu a:hover,
@@ -92,46 +19,26 @@ nav.menu a:active {
 
 button#mode {
   position: absolute;
-  top: 1.5rem;
-  right: 1rem;
-  width: 25px;
-  height: 25px;
-  background-image: url("/img/luna.png");
-  background-position: center;
-  background-size: cover;
-  background-color: transparent;
+  top: 1rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2re;
+  background-image: url("../img/luna.png");
   border: none;
 }
-button#mode:hover {
-  cursor: pointer;
-}
-button#mode.night {
-  background-image: url("/img/sol.png");
-}
+
 /*----------------FORM-------------------*/
 
 form div {
-  border: 3px solid var(--color-hoorry);
-  border-radius: 0.5rem;
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: space-around;
-  height: 100%;
+  border: 3px solid #ff8c44;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
 }
 
 input {
-  border: none;
-  padding: 10px;
-  font-family: Montserrat;
-  font-weight: 500;
-  background-color: var(--bg-input);
+  background-color: white;
 }
 
 input:focus {
-  outline: none;
   background-color: #e5eef8;
 }
 
@@ -145,13 +52,7 @@ input#destinationID {
 }
 
 form button {
-  border: none;
-  background-color: var(--btn-color);
-  border-radius: 0px 0px 4px 4px;
-  font-family: Montserrat;
-  font-size: 1rem;
-  padding: 8px;
-  font-weight: 700;
+  background-color: #3692f4;
   color: white;
 }
 
@@ -161,45 +62,15 @@ form button:active {
 }
 
 form button:hover {
-  cursor: pointer;
-  background-color: var(--bg-header);
+  background-color: #8bc3ff;
 }
 
 /*----------------RESULTS-------------------*/
 
-article#resultID {
-  display: none;
-}
-
 /*Contenedor de los resultados*/
 
 article {
-  background-color: var(--bg-resut);
-  color: var(--txt-color-result);
-  margin: 0 20px;
-  border-radius: 0.5rem;
-  min-height: 110px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-ul.main-article {
-  height: 110px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 10px;
-}
-
-/*li de los resultados*/
-
-ul.main-article li {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  background-color: white;
 }
 
 /* Primer tercio de los resultados */
@@ -207,29 +78,6 @@ ul.main-article li {
 ul.main-article > li:first-child {
   border-bottom: 1px solid rgba(211, 211, 211, 0.6);
   padding: 0;
-}
-
-/* Mitad superior de los resultados */
-
-ul.main-article > li > ul {
-  display: flex;
-  justify-content: space-around;
-  height: 60px;
-  width: 100%;
-}
-
-/*Segundo tercio de los resultados*/
-
-ul.time-stopeOvers-result {
-  flex-grow: 1;
-  min-width: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-ul.time-stopeOvers-result > li {
-  padding: 4px;
 }
 
 /*Tiempo del viaje*/
@@ -241,9 +89,8 @@ ul.time-stopeOvers-result > li:nth-child(2) {
   font-size: 0.8rem;
 }
 
-/*Cosas que queremos en negrita*/
-li.important {
-  font-weight: 700;
+ul.main-article li ul:nth-child(2) {
+  background-color: red;
 }
 
 ul.airline-price-result {
@@ -278,7 +125,7 @@ article.error {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--txt-white);
+  background-color: white;
   margin: 0 auto;
   width: 100px;
   height: 100px;
@@ -336,8 +183,9 @@ article.error {
     rgba(206, 223, 255, 0.5) -3px -3px 6px 1px inset;
 }
 .gatogit {
-  width: 20px;
-  margin-right: 5px;
+  width: 30px;
+  margin-right: 4px;
+  margin-right: 10px;
 }
 
 .view {
@@ -356,36 +204,18 @@ article.error {
   h1 {
     flex-direction: row;
     justify-content: flex-start;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     padding-top: 15px;
-  }
-
-  h1 > img {
-    height: 60px;
   }
 
   nav.menu {
     justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
-    margin-bottom: 20px;
   }
   nav.menu a {
     font-size: 20px;
   }
-
-  .gatogit {
-    width: 30px;
-    margin-right: 5px;
-  }
-
-  button#mode {
-    top: 2.7rem;
-    right: 4.5rem;
-    width: 30px;
-    height: 30px;
-  }
-
   form div {
     flex-direction: row;
     align-items: center;
@@ -409,17 +239,19 @@ article.error {
   input#originID {
     border-bottom: none;
     border-radius: 4px 0px 0px 4px;
-    border-right: 3px solid var(--color-hoorry);
+    border-right: 3px solid #ff8c44;
   }
 
   input#destinationID {
     border-bottom: none;
-    border-right: 3px solid var(--color-hoorry);
+    border-right: 3px solid #ff8c44;
   }
 
-  input#passengerID,
-  input#dateI {
-    border-right: 3px solid var(--color-hoorry);
+  input#passengerID {
+    border-right: 3px solid #ff8c44;
+  }
+  input#dateID {
+    border-right: 3px solid #ff8c44;
   }
 
   form button {

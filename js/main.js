@@ -12,7 +12,7 @@ import {
 const form = document.querySelector("form.search"); // Seleccionamos el formulario.
 
 const inputDate = document.querySelector("input#dateID"); // Seleccionamos el input donde se mostrará la fecha de mañana.
-
+const nightModeButtonElement = document.querySelector("button#mode");
 const results = document.querySelector("article.result"); // Selecccionamos el article donde irá nuestro resultado de la búsqueda.
 const article = document.querySelector("article#resultID"); // Seleccionamos nuestro article con un nombre diferente, por conveniencia.
 
@@ -43,12 +43,12 @@ const doSearch = async (event) => {
 
     //---------------- GESTIÓN DE ERRORES DE INPUT---------------------------------//
 
-    if (origin.length != 3) {
-      throw new Error("EL CÓDIGO IATA DEBE CONTENER 3 CARACTERES");
+    if (origin.length !== 3) {
+      throw new Error("El código IATA debe contener 3 caracteres.");
     }
 
-    if (destination.length != 3) {
-      throw new Error("EL CÓDIGO IATA DEBE CONTENER 3 CARACTERES");
+    if (destination.length !== 3) {
+      throw new Error("El código IATA debe contener 3 caracteres.");
     }
 
     //--------------------------------------------------------------------//
@@ -86,3 +86,9 @@ const doSearch = async (event) => {
 };
 
 form.addEventListener("submit", doSearch); // Añadimos el evento al botón y le asignamos la función manejadora previamente definida.
+
+nightModeButtonElement.addEventListener("click", () => {
+  nightModeButtonElement.classList.toggle("night");
+  const htmlElement = document.querySelector("html");
+  htmlElement.classList.toggle("night");
+});
