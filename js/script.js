@@ -28,6 +28,7 @@ async function getToken() {
       `Ha habido un error ${response.status}: ${response.statusText} `
     );
   } catch (error) {
+    //Como la gestión del error la llevamos a cabo en main, queremos que los catch nos devuelvan el error.message para así porder renderizarlo.
     return error.message;
   }
 }
@@ -52,6 +53,7 @@ async function getFlightsList(amadeusUrl) {
       `Ha habido un error ${response.status}: ${response.statusText}`
     );
   } catch (error) {
+    //Como la gestión del error la llevamos a cabo en main, queremos que los catch nos devuelvan el error.message para así porder renderizarlo.
     return error.message;
   }
 }
@@ -86,6 +88,7 @@ async function getCheapestFlight(JSON) {
     }
     return cheapestFlight;
   } catch (error) {
+    //Como la gestión del error la llevamos a cabo en main, queremos que los catch nos devuelvan el error.message para así porder renderizarlo.
     return error.message;
   }
 }
@@ -105,7 +108,7 @@ async function createFlightObject(flightData, dict) {
   if (getSegments === 0) {
     getSegments = "Directo";
   } else {
-    getSegments = getSegments + ` escalas`;
+    getSegments = getSegments + (getSegments > 1 ? " escalas" : " escala"); // Operador ternario para poner la "s" cuando tenemos más de una escala
   }
 
   // Aquí creamos nuestro objeto con nuestra info
@@ -142,7 +145,9 @@ async function createFlightObject(flightData, dict) {
   return flightObject;
 }
 
+// Función que muestra en pantalla la información del vuelo.
 async function render(flightObject) {
+  //Se selecciona el li en el que mostraremos la información y  luego se añade dicha información.
   const departureTimeElement = document.querySelector("li.departure-time");
   departureTimeElement.innerHTML = `${flightObject.departureTime}`;
 
@@ -167,11 +172,30 @@ async function render(flightObject) {
   const totalPriceElement = document.querySelector("li.price");
   totalPriceElement.innerHTML = `${flightObject.total} €`;
 }
+// Función encargada de mostrar en pantalla nuestros errores.
+async function renderError(error) {
+  // Creamos el article que mostrará el error.
+  const errorElement = document.createElement("article");
+  // Seleccionamos el botón del form.
+  const buttonElement = document.querySelector("button");
 
-function renderError(error) {
-  const errorElement = document.querySelector("article.error");
+  // Añadimos la clase error, el párrafo que mostrará el error y lo añadimos al main.
+  errorElement.classList.add("error");
   errorElement.innerHTML = `<p>${error.name}: ${error.message}<p>`;
-  errorElement.classList.toggle("display-none");
+  document.querySelector("main").append(errorElement);
+  // Deshabilitamos el botón para que no se stackeen errores en pantalla.
+  buttonElement.disabled = !buttonElement.disabled;
+
+  // En este temporizador damos una cuenta atrás durante la cual se mostrará el error y impedirá el uso del botón.
+  setTimeout(() => {
+    errorElement.innerHTML = ""; // Borramos el html para que se actualice en el DOM.
+
+    errorElement.classList.toggle("display-none"); //Le añadimos la clase para que desaparezca y evitar errores de visualización.
+
+    errorElement.remove; // Borramos el article que guarda el error.
+
+    buttonElement.disabled = !buttonElement.disabled; // Habilitamos el botón de vuelta.
+  }, 4000);
 }
 
 export {
