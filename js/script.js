@@ -64,13 +64,30 @@ async function getFlightsList(amadeusUrl) {
   }
 }
 
+//Función encargada de pasarle la fecha a la API.
+
 function getTomorrowDate() {
+  //Guardamos la fecha de hoy en una variable y le sumamos 1.
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
-  return `${tomorrow.getFullYear()}-${
-    tomorrow.getMonth() + 1
-  }-${tomorrow.getDate()}`;
+
+  //guardamos cada día, mes, año en su respectivas variables.
+  const tomorrowYear = tomorrow.getFullYear();
+  const tomorrowMonth = tomorrow.getMonth() + 1; //Los meses empiezan en 0 así que le sumamos 1
+  const tomorrowDay = tomorrow.getDate();
+
+  //Amadeus exige 2 cifras en sus peticiones así que usamos el operador ternario para verificar que las tengan o asignarles un 0 delante.
+  const tomorrowMonthParsed =
+    tomorrowMonth > 9 ? tomorrowMonth : `0${tomorrowMonth}`;
+
+  const tomorrowDayParsed = tomorrowDay > 9 ? tomorrowDay : `0${tomorrowDay}`;
+
+  //Finalmente la convertimos convenientemente en un string como el que Amadeus nos pide.
+  const tomorrowString = `${tomorrowYear}-${tomorrowMonthParsed}-${tomorrowDayParsed}`;
+
+  return tomorrowString;
 }
+
 // Función encargada de escoger el vuelo más barato entre los vuelos guardados en un JSON.
 async function getCheapestFlight(JSON) {
   try {

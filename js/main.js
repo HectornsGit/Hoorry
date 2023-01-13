@@ -8,7 +8,6 @@ import {
   render,
   renderError,
 } from "./script.js";
-
 const form = document.querySelector("form.search"); // Seleccionamos el formulario.
 
 const inputDate = document.querySelector("input#dateID"); // Seleccionamos el input donde se mostrará la fecha de mañana.
@@ -50,7 +49,6 @@ const doSearch = async (event) => {
     if (destination.length !== 3) {
       throw new Error("El código IATA debe contener 3 caracteres.");
     }
-
     //--------------------------------------------------------------------//
     const urlAmadeus = `https://test.api.amadeus.com/v2/shopping/flight-offers?originLocationCode=${origin.toUpperCase()}&destinationLocationCode=${destination.toUpperCase()}&departureDate=${getTomorrowDate()}&adults=1`;
 
