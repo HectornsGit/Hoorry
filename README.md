@@ -16,7 +16,7 @@
 4. Introduce dos códigos IATA por ejemplo "LCG, BCN " puedes encontrar más [aquí](https://www.iata.org/en/publications/directories/code-search/)
 
 Este proyecto fue desarrollado por:
-
+----------------------------------------------------------
 Gabriela - https://github.com/gabiyervese
 
 Efrén - https://github.com/blanconuclear
